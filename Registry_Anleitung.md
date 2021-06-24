@@ -13,7 +13,7 @@ Vor dem Aufetzen:
   
   Unter Windows kann die Konfiguration außerdem auch in der Docker Desktop Benutzeroberfläche durchgeführt werden. Unter "Einstellungen" / "Docker Engine" kann die `daemon.json` Datei direkt bearbeitet werden.
   
-**--> Diese Konfiguration muss neben dem Server Device auch auf dem Ziel Device durchgeführt werden! (Bei beiden die gleichen Daten bei `["registry_host:registry_port"]`!)**
+**--> Diese Konfiguration muss neben dem Server Device auch auf dem Ziel Device durchgeführt werden! (Bei allen Devices die auf das Registry zugreifen sollen müssen die Daten bei `["registry_host:registry_port"]` identisch sein!)**
 
 
 Fix found here: https://stackoverflow.com/questions/49674004/docker-repository-server-gave-http-response-to-https-client/63227959#63227959
