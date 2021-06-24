@@ -1,0 +1,17 @@
+{
+  "registry-mirrors": [],
+  "insecure-registries": [
+    "192.168.178.58:5000"
+  ],
+  "debug": false,
+  "experimental": false,
+  "features": {
+    "buildkit": true
+  },
+  "builder": {
+    "gc": {
+      "enabled": true,
+      "defaultKeepStorage": "20GB"
+    }
+  }
+}
