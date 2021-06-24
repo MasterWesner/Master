@@ -28,7 +28,7 @@ Aufsetzen des Registries mit `docker run -d -p 5000:5000 --restart=always --name
 Für eine zusätzliche Flexibilität kann das Registry mit einer `config.yml` Datei konfigurierbar gemacht werden. Dazu wird in einem lokalen Verzeichnis das `config.yml` File erstellt und dieses im `docker run` Prozess mit `-v <HostDirectory>.config.yml:/etc/docker/registry/config.yml` mit dem konfigurationsverzeichnis im Container verknüpft.
 In meinem Fall lautet der gesammte Befehl:
 
-`docker run -p 1100:5000 --network host --restart=always --name registry_conf -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf:/var/lib/registry/ -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf/Config/config.yml:/etc/docker/registry/config.yml registry:2`
+(`docker run -p 1100:5000 --network host --restart=always --name registry_conf -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf:/var/lib/registry/ -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf/Config/config.yml:/etc/docker/registry/config.yml registry:2`)
 
 _________________________________________________
 **Aktueller Stand 24.06.21:**
