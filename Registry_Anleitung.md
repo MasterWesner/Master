@@ -9,7 +9,7 @@ Vor dem Aufetzen:
 - Konfigurieren des Docker Daemons.
 
   Die Konfiguration erfolgt über ein `daemon.json` File welches bei Windows entweder unter `%userprofile%\.docker\daemon.json` oder unter   `C:\ProgramData\Docker\config\daemon.json`zu finden ist. Bei Linux unter `/etc/docker/daemon.json`.
-  Mit `{ "insecure-registries":["host:port"] }` bwz.   `["registry_host:registry_port"]` kann dem Daemon die IP des Registries zugeordnet werden. --> siehe beispielhaft das `daemon.json` File.
+  Mit `{ "insecure-registries":["host_IP:port"] }` bwz.   `["registry_host_IP:registry_port"]` kann dem Daemon die IP des Registries zugeordnet werden. --> siehe beispielhaft das `daemon.json` File.
   
   Unter Windows kann die Konfiguration außerdem auch in der Docker Desktop Benutzeroberfläche durchgeführt werden. Unter "Einstellungen" / "Docker Engine" kann die `daemon.json` Datei direkt bearbeitet werden.
   
@@ -49,3 +49,15 @@ Bei einer Änderung des `config.yml`Files wird das Registry mit `docker restart 
 Eine Änderung von: `addr: localhost:5001` bewirkt beispielsweise eine Änderung des zugewiesenen Ports des Registries. 
 
 Eine vollständige übersicht über die möglichen Einstellungen ist hier zu finden: https://docs.docker.com/registry/configuration/
+
+
+
+# Push und Pull
+
+## Push
+- Vom Registry Host Device:  `docker push localhost:<registry_port>/<Image_name>:<tag>`   --> beachte: localhost! (geht auch mit Host IP, jedoch nicht, wenn direkt aus dem Build Prozesse heraus das Image ins Registry gepushed werden soll!)
+- Von einem anderen Device im lokalen Netzwerk: `docker push <registry_host_IP>:<registry_port>/<Image_name>:<tag>`
+
+## Pull
+- Vom Registry Host Device: `docker pull localhost:<registry_port>/<Image_name>:<tag>`  --> Funktioniert auch bei Images die von einem anderen Device aus mit `<registry_host_IP>:<registry_port>` gepushed wurden!
+- Von einem anderen Device im lokalen Netzwerk: `docker pull <registry_host_IP>:<registry_port>/<Image_name>:<tag>`
