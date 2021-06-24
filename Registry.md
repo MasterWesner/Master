@@ -26,7 +26,7 @@ In meinem Fall lautet der gesammte Befehl:
 
 `docker run -p 1100:5000 --network host --restart=always --name registry_conf -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf:/var/lib/registry/ -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf/Config/config.yml:/etc/docker/registry/config.yml registry:2`
 
-Wichtig ist hierbei, dass der der veröffentlichte Port im run Befehl mit dem des Configuration Files übereinstimmt!
+Wichtig ist hierbei, dass der veröffentlichte Port im run Befehl mit dem des Configuration Files übereinstimmt!
 
 Dieser ermöglicht außerdem alle Funktionen von Variante 1. Um über localhost auf das Registry zugreifen zu können muss jedoch zusätzlich der Netzwerkmodus ausgewählt werden.
 Bei einer Änderung des Configuration Files wird das Registry mit `docker restart <RegistryName>`aktuallisiert. 
