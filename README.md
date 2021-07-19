@@ -19,16 +19,38 @@ Vor dem Aufetzen:
 Fix found here: https://stackoverflow.com/questions/49674004/docker-repository-server-gave-http-response-to-https-client/63227959#63227959
 
 
+## Aktuelle Variante:
+### Registry mit UI
+
+1. Download der `config.yml` und der `compose.yml` Datei
+2. Anpassen des Speicherverzeichnis der `config.yml` Datei und des gewünschten Daten-Verzeichnis in der `compose.yml` Datei (bei `volumes`)
+4. Auswahl des Verzeichnis im CLI mit `cd`
+5. Starten des Registries mit `docker compose up` <br>
+        alternativ: `docker-compose up`
+
+Zugang zum Registry erfolgt über `:5000` und zum UI über `localhost:80`
+Gegbenenfalls muss die URL des Registries im UI über das Menue hinzugefügt werden (`http://localhost:5000`)
+
+
+
+_______________________
+
+
+
+
+
+
+## Alte Varianten:
 
 ## Variante 1: 
 Aufsetzen des Registries mit `docker run -d -p 5000:5000 --restart=always --name registry -v F:\Daten\Studium\Master\Masterarbeit\Entwicklung\Docker\Registry:/var/lib/registry/ registry:2` --> Das Registry ist üben den Port 5001 erreichbar, startet automatisch nach jedem Neustart der Docker Engine, besizt den Namen "registry" und ist mit einem lokalen Verzeichnis verknüpft. Diese Konfiguration ermöglicht es den Inhalt des Registrys im lokalen Verzeichnis zu betrachten und somit eine erhöhte Transparent in die Vorgänge zu bringen. Dies ist hauptächlich in der Entwicklungsphase relevant. In der Produktivumgebung sollte dies mit Log-Files oder vergleichbarem ermöglicht werden.
 
 
 ## Variante 2: -konfigurierbar
-Für eine zusätzliche Flexibilität kann das Registry mit einer `config.yml` Datei konfigurierbar gemacht werden. Dazu wird in einem lokalen Verzeichnis das `config.yml` File erstellt und dieses im `docker run` Prozess mit `-v <HostDirectory>.config.yml:/etc/docker/registry/config.yml` mit dem konfigurationsverzeichnis im Container verknüpft.
+Für eine zusätzliche Flexibilität kann das Registry mit einer `config.yml` Datei konfigurierbar gemacht werden. Dazu wird in einem lokalen Verzeichnis das `config.yml` File erstellt und dieses im `docker run` Prozess mit `-v <HostDirectory>.config.yml:/etc/docker/registry/config.yml` mit dem Configurationsverzeichnis im Container verknüpft.
 In meinem Fall lautet der gesammte Befehl:
 
-(`docker run -p 1100:5000 --network host --restart=always --name registry_conf -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf:/var/lib/registry/ -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf/Config/config.yml:/etc/docker/registry/config.yml registry:2`)
+`docker run -p 1100:5000 --network host --restart=always --name registry_conf -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf:/var/lib/registry/ -v F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_Conf/Config/config.yml:/etc/docker/registry/config.yml registry:2`
 
 _________________________________________________
 **Aktueller Stand 24.06.21:**
@@ -49,7 +71,6 @@ Bei einer Änderung des `config.yml`Files wird das Registry mit `docker restart 
 Eine Änderung von: `addr: localhost:5001` bewirkt beispielsweise eine Änderung des zugewiesenen Ports des Registries. 
 
 Eine vollständige übersicht über die möglichen Einstellungen ist hier zu finden: https://docs.docker.com/registry/configuration/
-
 
 
 # Push und Pull
