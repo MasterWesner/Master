@@ -1,12 +1,24 @@
-version: '0.1'
+version: 0.1
 
 log:
   fields:
       services: registry
 
 storage:
+  cache:
+    blobdescriptor: inmemory
   filesystem:
     rootdirectory: /var/lib/registry
+  delete:
+    enabled: true
 
 http:
-  addr: 0.0.0.0:5000
+  addr: :5000
+
+  headers:
+    X-Content-Type-Options: [nosniff]
+    Access-Control-Allow-Origin: [ 'http://localhost' ]
+    Access-Control-Allow-Credentials: [ true ]
+    Access-Control-Allow-Headers: [ 'Authorization', 'Accept' ]
+    Access-Control-Allow-Methods: [ 'HEAD', 'GET', 'OPTIONS', 'DELETE' ]
+    Access-Control-Expose-Headers: [ 'Docker-Content-Digest' ]
