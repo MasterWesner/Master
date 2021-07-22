@@ -20,8 +20,10 @@ services:
       - "80:80"
     restart: always
     environment:
-      REGISTRY_URL: http://localhost:5000
-      REGISTRY_TITLE: My Local Docker Registry
+      - REGISTRY_URL=http://192.168.178.58:5000
+      - REGISTRY_TITLE=My Local Docker Registry
+      - DELETE_IMAGES=True
+      - SHOW_CONTENT_DIGEST=True
     networks:
       - registry-ui-net
     depends_on:
