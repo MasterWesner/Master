@@ -9,9 +9,9 @@ services:
       - "5000:5000"
     restart: always
     volumes:
-      - F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_UI:/var/lib/registry/
-      - F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_UI/config.yml:/etc/docker/registry/config.yml
-      - F:/Daten/Studium/Master/Masterarbeit/Entwicklung/Docker/Registry_UI/.htpasswd:/etc/docker/registry/.htpasswd
+      - ~/Docker_Registry/compose/Master/compose:/var/lib/registry/
+      - ~/Docker_Registry/compose/Master/compose/config.yml:/etc/docker/registry/config.yml
+      - ~/Docker_Registry/compose/Master/compose/.htpasswd:/etc/docker/registry/.htpasswd
     environment:
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
 
@@ -23,7 +23,7 @@ services:
     restart: always
     environment:
       NGINX_PROXY_PASS_URL: http://192.168.178.58:5000
-      REGISTRY_TITLE: "My Local Docker Registry"
+      REGISTRY_TITLE: "Docker Registry"
       DELETE_IMAGES: "true"
       SHOW_CONTENT_DIGEST: "true"
     depends_on:
