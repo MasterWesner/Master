@@ -17,7 +17,7 @@ http:
 
   headers:
     X-Content-Type-Options: [nosniff]
-    Access-Control-Allow-Origin: [ 'http://192.168.178.58' ]
+    Access-Control-Allow-Origin: [ 'http://131.188.113.84' ]
     Access-Control-Allow-Credentials: [ true ]
     Access-Control-Allow-Headers: [ 'Authorization']
     Access-Control-Allow-Methods: [ 'HEAD', 'GET', 'OPTIONS', 'DELETE' ]
